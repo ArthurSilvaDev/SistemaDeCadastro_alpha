@@ -12,16 +12,16 @@ import java.util.HashSet;
  *
  * @author mk
  */
-public class MotoristaDAO implements DAO {
+public class CaminhaoDAO implements DAO {
 
     
-    HashSet<Motorista> cadastro = new HashSet();
+    HashSet<Caminhao> cadastro = new HashSet();
 
     @Override
     public boolean inserir(Object obj) {
         if (obj != null) {
-            Motorista p = (Motorista) obj;
-            return cadastro.add(p);
+            Caminhao c = (Caminhao) obj;
+            return cadastro.add(c);
             
         }
         return false;
@@ -30,8 +30,8 @@ public class MotoristaDAO implements DAO {
     @Override
     public boolean excluir(Object obj) {
         if (obj != null) {
-            Motorista p = (Motorista) obj;
-            cadastro.remove(p);
+            Caminhao c = (Caminhao) obj;
+            cadastro.remove(c);
             return true;
         }
         return false;
@@ -42,13 +42,13 @@ public class MotoristaDAO implements DAO {
     //Em obj vai estar o nome da pessoa
     public Object pesquisar(Object obj) {
         if (obj !=null){
-            String CPF = (String) obj;
+            String Placa = (String) obj;
 //            for (int i =0; i< cadastro.size(); i++){
             Iterator it = cadastro.iterator();
             while(it.hasNext()){
-                Motorista p = (Motorista) it.next();
-                if (CPF.equals(p.getCpfFunc())){
-                    return p;
+                Caminhao c = (Caminhao) it.next();
+                if (Placa.equals(c.getPlacaVeic())){
+                    return c;
                 }
             }
         }
@@ -67,7 +67,7 @@ public class MotoristaDAO implements DAO {
         
     }
 
-    public HashSet<Motorista> getCadastro() {
+    public HashSet<Caminhao> getCadastro() {
         return cadastro;
     }
 

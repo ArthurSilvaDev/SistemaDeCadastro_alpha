@@ -1,5 +1,7 @@
 package infos;
 
+import java.util.Objects;
+
 public class Motorista extends Funcionario {
     
     // DECLARAÇÃO DE VARIÁVEIS
@@ -20,26 +22,8 @@ public class Motorista extends Funcionario {
         this.CNH = CNH;
     }
 
-    //FUNÇÕES
     
-    @Override
-    public void demitirFuncionario(){ // FUNÇÃO QUE CHAMA A FUNÇÃO MÃE E COMPLEMENTA
-        super.demitirFuncionario();
-        this.CNH = null;
-    }
-    
-    public static Motorista cadastrarMotorista() { // Função para criar Motoristas
-        
-
-        String nome = Console.lerDados("Digite o nome do motorista: ");
-        
-        String CNH = Console.lerDados("Digite o numero da CNH: ");
-
-        String CPF = Console.lerDados("Digite o CPF do motorista: ");
-       
-
-        return new Motorista(nome, CNH, CPF);
-    }
+   
     
     
     //GET E SETR
@@ -70,6 +54,28 @@ public class Motorista extends Funcionario {
                 "\nCPF: " + super.getCpfFunc()+ 
                 "\nCracha: " + super.getCodFunc()+
                 "\n----------";
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.CNH);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Motorista other = (Motorista) obj;
+        return Objects.equals(this.getCpfFunc(), other.getCpfFunc());
     }
     
     

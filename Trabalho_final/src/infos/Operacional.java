@@ -3,6 +3,19 @@ package infos;
 
 public class Operacional {
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public static void clearConsole() {
          try {
             String os = System.getProperty("os.name").toLowerCase();

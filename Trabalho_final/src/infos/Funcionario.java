@@ -1,5 +1,7 @@
 package infos;
 
+import java.util.Objects;
+
 
 public class Funcionario {
     
@@ -67,6 +69,29 @@ public class Funcionario {
     @Override
     public String toString() {
         return "Funcionario{" + "codFunc=" + codFunc + ", nome=" + nomeFunc + ", CPF=" + CpfFunc + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.nomeFunc);
+        hash = 53 * hash + Objects.hashCode(this.CpfFunc);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Funcionario other = (Funcionario) obj;
+        return Objects.equals(this.CpfFunc, other.CpfFunc);
     }
     
     

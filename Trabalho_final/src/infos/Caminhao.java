@@ -1,6 +1,6 @@
 package infos;
 
-import java.util.Scanner;
+import java.util.Objects;
 
 public class Caminhao {
     
@@ -21,24 +21,7 @@ public class Caminhao {
     
     //FUNCÕES
     
-    public static Caminhao cadastrarCaminhao() { //Função para cadastrar um caminhão no sistema
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Digite o modelo do veiculo: ");
-        String modVeic = scanner.nextLine();
-
-        System.out.print("Digite o ano do veiculo: ");
-        String anoVeic = scanner.nextLine();
-
-        System.out.print("Digite a placa do veiculo: ");
-        String placaVeic = scanner.nextLine();
-
-        scanner.close();
-        
-        System.out.println("Cadastro do veiculo de placa " + placaVeic + " realizado com sucesso");
-
-        return new Caminhao(modVeic, anoVeic, placaVeic);
-    }
+    
     
     
     
@@ -94,6 +77,28 @@ public class Caminhao {
                 "\nPlaca do Veiculo: " + placaVeic + 
                 "\nMotorista do Veiculo: " + motoristaVeic +
                 "\n----------";
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + Objects.hashCode(this.placaVeic);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Caminhao other = (Caminhao) obj;
+        return Objects.equals(this.getPlacaVeic(), other.getPlacaVeic());
     }
     
     
